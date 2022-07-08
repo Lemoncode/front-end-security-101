@@ -9,3 +9,4 @@ junit.xml
 yarn.lock
 .awcache
 public
+.parcel-cache
