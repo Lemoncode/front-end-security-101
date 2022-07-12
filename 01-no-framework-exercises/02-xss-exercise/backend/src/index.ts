@@ -11,7 +11,6 @@ app.use(
   })
 );
 
-
 app.get("/", (req, res) => {
   res.setHeader("Authorization", "Bearer123456789");
   res.send({

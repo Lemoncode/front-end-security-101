@@ -7,13 +7,7 @@ let authHeader = "";
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   event.stopPropagation();
-  fetch("http://localhost:3000", {
-    mode: "cors",
-    credentials: "include",
-    headers: {
-      "Access-Control-Allow-Origin": "*",
-    },
-  })
+  fetch("http://localhost:3000")
     .then((resp) => {
       authHeader = resp.headers.get("Authorization");
       console.log(...resp.headers);
