@@ -31,7 +31,7 @@ document.getElementById("send").addEventListener("click", function (e) {
   fetch("http://localhost:3000/token", {
     method: "GET",
     headers: new Headers({
-      Authorization: "Bearer123456789",
+      Authorization: authHeader,
       "Content-type": "application/json",
       Accept: "application/json",
     }),
