@@ -7,22 +7,12 @@ app.use(
 		methods: "GET",
 		origin: "http://localhost:1234",
 		credentials: true,
-		//Access-Control-Allow-Credentials: true
-		exposedHeaders: "*",
+		exposedHeaders: ["Authorization"],
 	})
 );
 
-app.use(function (req, res, next) {
-	res.header("Access-Control-Allow-Credentials", "true");
-	res.header(
-		"Access-Control-Allow-Headers",
-		"Origin, X-Requested-With, Content-Type, Accept, Authorization"
-	);
-	next();
-});
-
 app.get("/", (req, res) => {
-	res.setHeader("authorization", "Bearer123456789");
+	res.setHeader("Authorization", "Bearer123456789");
 	res.send({
 		"Content-Type": "text/plain",
 		"Content-Length": "123",
