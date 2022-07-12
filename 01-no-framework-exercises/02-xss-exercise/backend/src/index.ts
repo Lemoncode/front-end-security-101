@@ -11,7 +11,7 @@ app.use(
 	})
 );
 
-app.get("/", (req, res) => {
+app.get("/login", (req, res) => {
 	res.setHeader("Authorization", "Bearer123456789");
 	res.send({
 		"Content-Type": "text/plain",
@@ -21,7 +21,7 @@ app.get("/", (req, res) => {
 	res.send("My awesome login portal").sendStatus(200);
 });
 
-app.get("/token:token", (req, res) => {
+app.get("/bio", (req, res) => {
 	if (!req.headers.authorization) {
 		return res
 			.status(403)
