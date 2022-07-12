@@ -8,6 +8,7 @@
 	</head>
 	<body>
 		<h1 class="background">Frontend security</h1>
+		<h2>Formulario de login</h2>
 		<form id="MyForm" action="" method="get">
 			<div>
 				<label for="user">Usuario:</label>
@@ -22,12 +23,18 @@
 			</div>
 		</form>
 		<div>
+			<h2>Añade tu biografía</h2>
 			<div>
 				<label for="bio">Introduce tu biografía:</label>
 				<textarea id="bio" name="bio" />
-				<button id="send" type="button">Enviar</button>
+				<button id="sendBio" type="button">Enviar</button>
 			</div>
 			<span id="result"></span>
+		</div>
+		<div>
+			<h2>Acceso a tus datos privados</h2>
+			<button id="getPrivateData" type="button">Obtener mis datos</button>
+			<span id="resultPrivateData"></span>
 		</div>
 		<script type="module" src="./index.ts"></script>
 	</body>

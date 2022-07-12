@@ -4,24 +4,26 @@ const app = express();
 
 app.use(
 	cors({
-		methods: "GET",
 		origin: "http://localhost:1234",
 		credentials: true,
 		exposedHeaders: ["Authorization"],
 	})
 );
 
-app.get("/login", (req, res) => {
-	res.setHeader("Authorization", "Bearer123456789");
-	res.send({
-		"Content-Type": "text/plain",
-		"Content-Length": "123",
-		Authorization: "Bearer12345",
-	});
-	res.send("My awesome login portal").sendStatus(200);
+app.post("/login", (req, res) => {
+	let username = req.body?.user;
+	let password = req.body?.password;
+	if (username === "admin" && password === "admin") {
+		return res
+			.setHeader("Authorization", "Bearer123456789")
+			.send("Login success")
+			.sendStatus(200);
+	} else {
+		return res.status(403).send("Usuario o contraseña incorrectos");
+	}
 });
 
-app.get("/bio", (req, res) => {
+app.post("/bio", (req, res) => {
 	if (!req.headers.authorization) {
 		return res
 			.status(403)
@@ -29,7 +31,22 @@ app.get("/bio", (req, res) => {
 	}
 
 	if (req.headers.authorization === "Bearer123456789") {
-		return res.status(200).send({ message: "Welcome" });
+		return res.status(200).send({ message: "Biografía actualizada" });
+	}
+});
+
+app.get("/private-area", (req, res) => {
+	if (!req.headers.authorization) {
+		return res
+			.status(403)
+			.send({ message: "Tu petición no tiene cabecera de autorización" });
+	}
+
+	if (req.headers.authorization === "Bearer123456789") {
+		return res.status(200).send({
+			nombre: "John Doe",
+			bio: "Me acaban de robar mis datos personales :-(",
+		});
 	}
 });
 
