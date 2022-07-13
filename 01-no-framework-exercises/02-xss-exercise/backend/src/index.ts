@@ -1,5 +1,7 @@
 import express from "express";
 import cors from "cors";
+import bodyParser from "body-parser";
+
 const app = express();
 
 app.use(
@@ -9,11 +11,11 @@ app.use(
 		exposedHeaders: ["Authorization"],
 	})
 );
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post("/login", (req, res) => {
-	let username = req.body?.user;
-	let password = req.body?.password;
-	if (username === "admin" && password === "admin") {
+	if (req.body.user === "admin" && req.body.password === "admin") {
 		return res
 			.setHeader("Authorization", "Bearer123456789")
 			.send("Login success")
