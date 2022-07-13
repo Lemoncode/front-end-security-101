@@ -17,7 +17,6 @@ form.addEventListener("submit", (event) => {
 
 	fetch("http://localhost:3000/login", {
 		method: "POST",
-		credentials: "same-origin",
 		headers: {
 			Accept: "application/json, text/plain, */*",
 			"Content-Type": "application/json",
@@ -50,8 +49,7 @@ document.getElementById("sendBio").addEventListener("click", (e) => {
 		.catch((error) => console.log(error));
 });
 
-// Paste this in text area for example:
-// <a style="color:blue; cursor:pointer;" onClick='fetch("http://localhost:3000/login").then((resp) => alert("Gracias por su token de autorización: "+resp.headers.get("Authorization")))'>Click aquí para ver tu biografía</a>
+// Paste this example in text area: <a onClick="alert('Gracias por su token de autorización')">Click aquí para ver tu biografía</a>
 
 document.getElementById("getPrivateData").addEventListener("click", (e) => {
 	fetch("http://localhost:3000/private-area", {
