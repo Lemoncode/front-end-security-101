@@ -1,5 +1,31 @@
-Al intentar injectar el código utilizando la etiqueta `<script>` vemos que **html5** ya controla esta posibilidad eliminando la etiqueta y delvolviendo el contenido como un **string**.
+# 02 XSS Exercise with JavaScript
 
-Podemos saltarnos esta restricción injectando nuestro código por ejemplo en la función `onerror` de la etiqueta `<img>`
+## Steps:
 
-`<img src='x' onerror='alert("la hemos liao")'>`
+- Log into the application using as user _admin_ and password _admin_.
+- Once logged in we have received our token for the headers. And now let's see how to subtract them.
+- We insert this anchor in the textearea and send the request to the server.
+
+```javascript
+<a onClick="alert('Gracias por su token de autorización: '+window.authHeader)">
+  Click aquí para ver tu biografía
+</a>
+```
+
+- It will generate a paragraph below the textarea and tell us to click on it to see our entered biography.
+
+```
+Click aquí para ver tu biografía
+```
+
+- And if we click on it we will get an alert saying:
+
+```
+Gracias por su token de autorización: <here is your token>
+```
+
+- Another way to obtain the token would be to introduce in the textarea an image as we did in the previous example. And when it gives an error because it has not been able to obtain the image, an alert pops up and we get the token.
+
+```
+<img src='x' onerror='alert("Gracias por su token de autorización: "+window.authHeader)'>
+```
