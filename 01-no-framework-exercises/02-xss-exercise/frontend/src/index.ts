@@ -5,8 +5,6 @@ const loginData = {
 	password: document.getElementById("password"),
 };
 
-let authHeader = "";
-
 form.addEventListener("submit", (event) => {
 	event.preventDefault();
 	event.stopPropagation();
@@ -27,7 +25,7 @@ form.addEventListener("submit", (event) => {
 		}),
 	})
 		.then((resp) => {
-			authHeader = resp.headers.get("Authorization");
+			window["authHeader"] = resp.headers.get("Authorization");
 			console.log(...resp.headers);
 		})
 		.catch((err) => console.log(err));
@@ -40,7 +38,7 @@ document.getElementById("sendBio").addEventListener("click", (e) => {
 	fetch("http://localhost:3000/bio", {
 		method: "POST",
 		headers: {
-			Authorization: authHeader,
+			Authorization: window["authHeader"],
 			"Content-type": "application/json",
 			Accept: "application/json",
 		},
@@ -55,7 +53,7 @@ document.getElementById("getPrivateData").addEventListener("click", (e) => {
 	fetch("http://localhost:3000/private-area", {
 		method: "GET",
 		headers: {
-			Authorization: authHeader,
+			Authorization: window["authHeader"],
 			"Content-type": "application/json",
 			Accept: "application/json",
 		},
