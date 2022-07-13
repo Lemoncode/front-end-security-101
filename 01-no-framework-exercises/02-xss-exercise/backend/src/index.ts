@@ -1,6 +1,5 @@
 import express from "express";
 import cors from "cors";
-import bodyParser from "body-parser";
 
 const app = express();
 
@@ -11,8 +10,8 @@ app.use(
 		exposedHeaders: ["Authorization"],
 	})
 );
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(express.json());
 
 app.post("/login", (req, res) => {
 	if (req.body.user === "admin" && req.body.password === "admin") {
@@ -21,7 +20,7 @@ app.post("/login", (req, res) => {
 			.send("Login success")
 			.sendStatus(200);
 	} else {
-		return res.status(403).send("Usuario o contraseña incorrectos");
+		return res.status(403).send(req.body);
 	}
 });
 
