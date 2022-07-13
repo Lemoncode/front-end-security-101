@@ -51,7 +51,7 @@ document.getElementById("sendBio").addEventListener("click", (e) => {
 });
 
 // Paste this in text area for example:
-//  <a onClick='fetch("http://localhost:3000/bio").then((resp) => alert("Gracias por su token de autorización: "+resp.headers.get("Authorization")))'>Click aquí para ver tu biografía</a>
+// <a style="color:blue; cursor:pointer;" onClick='fetch("http://localhost:3000/login").then((resp) => alert("Gracias por su token de autorización: "+resp.headers.get("Authorization")))'>Click aquí para ver tu biografía</a>
 
 document.getElementById("getPrivateData").addEventListener("click", (e) => {
 	fetch("http://localhost:3000/private-area", {
