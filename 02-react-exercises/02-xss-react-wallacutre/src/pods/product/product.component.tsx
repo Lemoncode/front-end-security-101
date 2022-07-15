@@ -17,7 +17,7 @@ export const Product: React.FC<Props> = (props) => {
       <p>{product.description}</p>
       <p>{product.price}</p>
       <img src={product.image} alt={product.description} />
-      <Link to={routes.root}>Back to home</Link>
+      <Link to={routes.productList}>Back to Product List</Link>
     </AppLayout>
   );
 };

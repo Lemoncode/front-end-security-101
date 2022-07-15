@@ -44,10 +44,7 @@ export const getProduct = async (id: number) => {
   return product[0];
 };
 
-export const insertProduct = async (product: Product) => {
-  const id = mockProductList.length + 1;
-  const newProduct = { ...product, id };
-
+export const insertProduct = async (newProduct: Product) => {
   mockProductList = [...mockProductList, newProduct];
 };
 

@@ -23,6 +23,7 @@ export const ProductList: React.FC<Props> = (props) => {
           </Link>
         </div>
       ))}
+      <Link to={routes.root}>Go to Home</Link>
     </>
   );
 };

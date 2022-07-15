@@ -1,5 +1,5 @@
 import React from "react";
-import { ProductContainer } from "../pods/product/product.container";
+import { ProductContainer } from "../pods/product";
 
 export const ProductPage = () => {
   return <ProductContainer />;
