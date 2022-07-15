@@ -33,7 +33,9 @@ export const App: React.FC = () => {
             className={classes.input}
             value={input}
           />
-          <input type="submit" value="Submit" className={classes.button} />
+          <button type="submit" className={classes.button}>
+            Submit
+          </button>
         </div>
       </form>
 

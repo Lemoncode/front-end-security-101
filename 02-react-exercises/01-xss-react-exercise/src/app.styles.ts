@@ -33,6 +33,7 @@ export const button = css`
   font-size: 20px;
   padding: 12px 20px;
   width: 100%;
+  cursor: pointer;
 `;
 
 export const image = css`
