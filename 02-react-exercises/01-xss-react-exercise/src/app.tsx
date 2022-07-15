@@ -5,6 +5,7 @@ import logo from "./content/logo_2.png";
 export const App: React.FC = () => {
   const [input, setInput] = React.useState("");
   const [output, setOutput] = React.useState("");
+  const [error, setError] = React.useState('javascript:alert("Hacked")');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -38,6 +39,7 @@ export const App: React.FC = () => {
 
       <h2 dangerouslySetInnerHTML={{ __html: output }}></h2>
       <img src={logo} alt="logo" className={classes.image} />
+      <a href={error}>Send</a>
     </div>
   );
 };
