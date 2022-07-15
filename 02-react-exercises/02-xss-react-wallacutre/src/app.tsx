@@ -1,6 +1,11 @@
 import React from "react";
-import { RouterComponent } from "./core/router/router.component";
+import { RouterComponent } from "./core";
+import { CenterLayout } from "./layouts";
 
 export const App: React.FC = () => {
-  return <RouterComponent />;
+  return (
+    <CenterLayout>
+      <RouterComponent />
+    </CenterLayout>
+  );
 };

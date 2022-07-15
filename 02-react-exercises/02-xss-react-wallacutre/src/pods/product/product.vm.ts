@@ -1,4 +1,4 @@
-export interface Product {
+export interface ProductVm {
   id: number;
   name: string;
   price: number;
@@ -6,7 +6,7 @@ export interface Product {
   image: string;
 }
 
-export const createEmptyProduct = (): Product => ({
+export const createEmptyProduct = (): ProductVm => ({
   id: 0,
   name: "",
   price: 0,
