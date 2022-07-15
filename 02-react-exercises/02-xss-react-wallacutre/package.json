@@ -6,6 +6,13 @@
     "defaults"
   ],
   "source": "src/index.html",
+  "alias": {
+    "core": "/src/core",
+    "common": "/src/common",
+    "pods": "/src/pods",
+    "layouts": "/src/layouts",
+    "scenes": "/src/scenes"
+  },
   "scripts": {
     "start": "run-p -l type-check:watch start:dev",
     "start:dev": "rimraf dist && parcel --open",

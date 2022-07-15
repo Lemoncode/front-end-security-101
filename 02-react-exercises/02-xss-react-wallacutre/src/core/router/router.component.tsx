@@ -1,12 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { switchRoutes } from "./routes";
 import {
   ProductListScene,
   ProductPage,
   HomeScene,
   CreateProductScene,
-} from "../../scenes";
+} from "scenes";
+import { switchRoutes } from "./routes";
 
 export const RouterComponent: React.FC = () => {
   return (

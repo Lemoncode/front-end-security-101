@@ -1,6 +1,5 @@
 import React from "react";
-import { CreateProductContainer } from "../pods/create-product";
+import { CreateProductContainer } from "pods/create-product";
 
-export const CreateProductScene = () => {
-  return <CreateProductContainer />;
-};
+export const CreateProductScene = () => <CreateProductContainer />;
+

@@ -45,7 +45,7 @@ export const getProduct = async (id: number) => {
 };
 
 export const insertProduct = async (newProduct: Product) => {
-  mockProductList = [...mockProductList, newProduct];
+  mockProductList = [newProduct, ...mockProductList];
 };
 
 export const deleteProduct = async (id: number) => {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { AppLayout } from "../../layouts";
-import { routes } from "../../core";
+import { routes } from "core";
+import { AppLayout } from "layouts";
 import { ProductVm } from "./product.vm";
 
 interface Props {

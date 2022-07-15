@@ -1,8 +1,8 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { ProductVm, createEmptyProduct } from "./product.vm";
+import { getProduct } from "./api";
 import { Product } from "./product.component";
-import { getProduct } from "./api/product.api";
 
 export const ProductContainer: React.FC = () => {
   const { id } = useParams();

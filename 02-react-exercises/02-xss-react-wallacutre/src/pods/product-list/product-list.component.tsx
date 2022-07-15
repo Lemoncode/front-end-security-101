@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { routes } from "../../core";
+import { routes } from "core";
 import { Product } from "./product-list.vm";
 
 interface Props {
