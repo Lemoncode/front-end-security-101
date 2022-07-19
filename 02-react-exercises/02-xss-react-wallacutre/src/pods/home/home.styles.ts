@@ -5,8 +5,7 @@ export const root = css`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 50vh;
-  gap: 4rem;
+  height: 40vh;
 `;
 
 export const buttonContainer = css`

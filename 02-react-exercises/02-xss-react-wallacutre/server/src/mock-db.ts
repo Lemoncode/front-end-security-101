@@ -9,31 +9,39 @@ interface Product {
 let mockProductList: Product[] = [
   {
     id: 1,
-    name: "Product 1",
-    price: 10,
-    description: "Product 1 description",
-    image: "https://via.placeholder.com/150",
+    name: "Play Stalin 4",
+    price: 250,
+    description:
+      "play 4 con dos mandos, último juego call of duty digital y con plus para siempre gratis",
+    image:
+      "http://drive.google.com/uc?export=view&id=1mBLxE6f5d3gz3nXPcR8c16GuF0PQLBrY",
   },
   {
     id: 2,
-    name: "Product 2",
-    price: 20,
-    description: "Product 2 description",
-    image: "https://via.placeholder.com/150",
+    name: "Placa base de un router",
+    price: 0.99,
+    description:
+      "No sirve de nada pero si alguien entra en tu cuarto y ve esto pensará que eres hacker y te tendrá respeto",
+    image:
+      "http://drive.google.com/uc?export=view&id=1oRlnpUYmcrAvJIA3rKnu07yjWMUd-ISk",
   },
   {
     id: 3,
-    name: "Product 3",
+    name: "Test de embarazo positivo",
     price: 30,
-    description: "Product 3 description",
-    image: "https://via.placeholder.com/150",
+    description:
+      "Vendo test de embarazo positivo para broma a marido, novio o amante",
+    image:
+      "http://drive.google.com/uc?export=view&id=1UDSBEZ9gKa9-d6xGGNSG2brwotQqkPMj",
   },
   {
     id: 4,
-    name: "Product 4",
+    name: "Vendo coche marronero",
     price: 40,
-    description: "Product 4 description",
-    image: "https://via.placeholder.com/150",
+    description:
+      "Como nuebo, 113 cv aunk parecen 280, de 0 100 a lo k le pises. Tirale sin miedo, 10 años de uso y no me ha parado la Guardia civil desde los 15. Se vende pork tengo 7 hijos y como se lo dejé a alguno me viene con otros 7. Este coche ... solo.",
+    image:
+      "http://drive.google.com/uc?export=view&id=1Kn3Voxh0C6vHhhsez8VayzpQT3HOxRph",
   },
 ];
 

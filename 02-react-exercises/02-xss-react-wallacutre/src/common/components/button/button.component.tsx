@@ -1,7 +1,7 @@
 import React from "react";
 import { Link as LinkRouter } from "react-router-dom";
 import { cx } from "@emotion/css";
-import * as classes from "./link.styles";
+import * as classes from "./button.styles";
 
 interface Props {
   route: string;

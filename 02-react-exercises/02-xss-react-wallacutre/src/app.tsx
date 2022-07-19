@@ -1,11 +1,13 @@
 import React from "react";
 import { RouterComponent } from "./core";
-import { CenterLayout } from "./layouts";
+import { CenterLayout, HeaderLayout } from "./layouts";
 
 export const App: React.FC = () => {
   return (
     <CenterLayout>
-      <RouterComponent />
+      <HeaderLayout>
+        <RouterComponent />
+      </HeaderLayout>
     </CenterLayout>
   );
 };

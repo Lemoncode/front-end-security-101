@@ -5,10 +5,7 @@ interface SwitchRoutes {
   productList: string;
   product: string;
   createProduct: string;
-}
-
-interface Routes extends Omit<SwitchRoutes, "product"> {
-  product: (id: string) => string;
+  payment: string;
 }
 
 export const switchRoutes: SwitchRoutes = {
@@ -16,9 +13,19 @@ export const switchRoutes: SwitchRoutes = {
   productList: "/product-list/",
   product: "/product/:id",
   createProduct: "/create-product",
+  payment: "/payment",
 };
+
+interface Routes {
+  root: string;
+  productList: string;
+  createProduct: string;
+  product: (id: string) => string;
+  payment: (id: string) => string;
+}
 
 export const routes: Routes = {
   ...switchRoutes,
   product: (id) => generatePath(switchRoutes.product, { id }),
+  payment: (id) => generatePath(switchRoutes.payment, { id }),
 };

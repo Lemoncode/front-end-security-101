@@ -3,10 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { Product, createEmptyProduct } from "./create-product.vm";
 import { routes } from "core";
 import { saveProduct } from "./api";
+import image from "core/assets/imac.jpg";
 import * as classes from "./create-product.styles";
 
 export const CreateProduct = () => {
   const [product, setProduct] = React.useState<Product>(createEmptyProduct());
+  const [hack, setHack] = React.useState('javascript:alert("Hacked")');
+
   const navigate = useNavigate();
 
   const updateFieldValue = (name: keyof Product) => (e) => {
@@ -21,39 +24,45 @@ export const CreateProduct = () => {
     const newProduct = saveProduct({
       ...product,
       id: Date.now(),
-      image: "https://via.placeholder.com/150",
+      image:
+        "http://drive.google.com/uc?export=view&id=1mDCB37dByS2Zbh3OBvs3Cd5Y-ZLF8adA",
       price: Number(product.price),
     });
     setProduct(createEmptyProduct());
     setTimeout(() => navigate(routes.productList), 2000);
   };
   return (
-    <>
-      <h1>Create Product</h1>
+    <div>
       <form onSubmit={handleSubmit}>
         <div className={classes.root}>
+          <img src={image} alt="product photo" />
+          <a href={hack}>Click here for a larger image</a>
           <label htmlFor="name">Name:</label>
           <input
             name="name"
             onChange={updateFieldValue("name")}
             value={product.name}
+            className={classes.input}
           />
-          <img src="https://via.placeholder.com/150" alt="product photo" />
           <label htmlFor="description">Description:</label>
           <textarea
             name="description"
             onChange={updateFieldValue("description")}
             value={product.description}
+            className={classes.textarea}
           />
           <label htmlFor="price">Price:</label>
           <input
             name="price"
             onChange={updateFieldValue("price")}
             value={product.price}
+            className={classes.input}
           />
-          <button type="submit">Create Product</button>
+          <button type="submit" className={classes.button}>
+            Create Product
+          </button>
         </div>
       </form>
-    </>
+    </div>
   );
 };

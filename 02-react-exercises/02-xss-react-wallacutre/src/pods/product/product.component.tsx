@@ -1,8 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Button } from "common/components";
 import { routes } from "core";
-import { AppLayout } from "layouts";
 import { ProductVm } from "./product.vm";
+import * as classes from "./product.styles";
 
 interface Props {
   product: ProductVm;
@@ -11,13 +11,23 @@ interface Props {
 export const Product: React.FC<Props> = (props) => {
   const { product } = props;
   return (
-    <AppLayout>
-      <h1>Hello from productPage</h1>
-      <p>{product.name}</p>
+    <div className={classes.root}>
+      <img
+        src={product.image}
+        alt={product.description}
+        className={classes.image}
+      />
+      <p className={classes.price}>{product.price} EUR</p>
+      <p className={classes.name}>{product.name}</p>
       <p>{product.description}</p>
-      <p>{product.price}</p>
-      <img src={product.image} alt={product.description} />
-      <Link to={routes.productList}>Back to Product List</Link>
-    </AppLayout>
+      <div className={classes.buttonContainer}>
+        <Button route={routes.productList} label="Back to Product List" />
+        <Button
+          route={routes.payment(product.id.toString())}
+          label="Buy"
+          className={classes.buttonBuy}
+        />
+      </div>
+    </div>
   );
 };
