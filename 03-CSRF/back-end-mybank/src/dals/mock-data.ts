@@ -1,4 +1,5 @@
-import { Account, Movements } from "./model";
+import { Account } from "./account";
+import { Movement } from "./movement";
 
 export const accountList: Account[] = [
   {
@@ -11,7 +12,7 @@ export const accountList: Account[] = [
   },
 ];
 
-export const movements: Movements[] = [
+export const movementList: Movement[] = [
   {
     id: "1",
     description: "Nómina noviembre",
@@ -94,3 +95,14 @@ export const movements: Movements[] = [
     accountId: "1",
   },
 ];
+
+export const users: User[] = [
+  {
+    id: "1",
+    email: "user@email.com",
+    password: "test",
+  },
+];
+
+export const getAccount = async () => accountList[0];
+export const getMovements = async () => movementList;

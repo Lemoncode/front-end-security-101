@@ -1,12 +1,4 @@
-import express from "express";
+import { config } from "dotenv";
+config();
 
-const app = express();
-app.use(express.json());
-
-app.get("/", (req, res) => {
-  res.send("My awesome books portal");
-});
-
-app.listen(3000, () => {
-  console.log("Server ready at port 3000");
-});
+require("./app");
