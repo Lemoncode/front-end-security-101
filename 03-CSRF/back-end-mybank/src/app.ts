@@ -4,14 +4,16 @@ import { createRestApiServer } from "core/servers";
 import { envConstants } from "core/constants";
 import { accountsApi } from "pods/account";
 import { movementsApi } from "pods/movement";
+import { securityApi, authenticationMiddleware } from "pods/security";
 
 const restApiServer = createRestApiServer();
 
 const staticFilesPath = path.resolve(__dirname, envConstants.STATIC_FILES_PATH);
 restApiServer.use("/", express.static(staticFilesPath));
 
-restApiServer.use("/api/accounts", accountsApi);
-restApiServer.use("/api/movements", movementsApi);
+restApiServer.use("/api/security", securityApi);
+restApiServer.use("/api/accounts", authenticationMiddleware, accountsApi);
+restApiServer.use("/api/movements", authenticationMiddleware, movementsApi);
 
 restApiServer.listen(envConstants.PORT, () => {
   console.log(`Server ready at port ${envConstants.PORT}`);
