@@ -19,8 +19,9 @@ export const ProductList: React.FC<Props> = (props) => {
           <Link
             to={routes.product(product.id.toString())}
             className={classes.link}
+            key={product.id}
           >
-            <div key={product.id} className={classes.cardContainer}>
+            <div className={classes.cardContainer}>
               <img
                 src={product.image}
                 alt={product.description}

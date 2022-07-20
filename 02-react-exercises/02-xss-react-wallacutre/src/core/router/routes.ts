@@ -13,7 +13,7 @@ export const switchRoutes: SwitchRoutes = {
   productList: "/product-list/",
   product: "/product/:id",
   createProduct: "/create-product",
-  payment: "/payment",
+  payment: "/payment/:id",
 };
 
 interface Routes {
