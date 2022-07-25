@@ -34,6 +34,15 @@ securityApi
     }
   })
 
+  .get("/current-user", authenticationMiddleware, async (req, res, next) => {
+    try {
+      // const user = await userRepository.getUser(req.userSession?.id);
+      console.log(req);
+    } catch (error) {
+      next(error);
+    }
+  })
+
   .post("/logout", authenticationMiddleware, async (req, res) => {
     res.clearCookie("authorization");
     res.sendStatus(200);

@@ -12,6 +12,7 @@ export const db: DB = {
   userList: [
     {
       id: "1",
+      name: "User",
       email: "user@email.com",
       password: "test",
       accountId: "1",
