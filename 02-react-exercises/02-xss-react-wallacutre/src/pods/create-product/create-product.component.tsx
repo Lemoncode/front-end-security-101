@@ -36,7 +36,6 @@ export const CreateProduct = () => {
       <form onSubmit={handleSubmit}>
         <div className={classes.root}>
           <img src={image} alt="product photo" />
-          <a href={hack}>Click here for a larger image</a>
           <label htmlFor="name">Name:</label>
           <input
             name="name"
@@ -51,6 +50,7 @@ export const CreateProduct = () => {
             value={product.description}
             className={classes.textarea}
           />
+          {/* <h2 dangerouslySetInnerHTML={{ __html: hack }}></h2> */}
           <label htmlFor="price">Price:</label>
           <input
             name="price"
