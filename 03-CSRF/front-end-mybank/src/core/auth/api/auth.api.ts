@@ -3,7 +3,7 @@ import { LoginCredential, User } from "./auth.api-model";
 export const doLogin = async (
   loginCredential: LoginCredential
 ): Promise<boolean> => {
-  const url = "http://localhost:3000/api/security/login";
+  const url = "/api/security/login";
   const response = await fetch(url, {
     method: "POST",
     headers: {
@@ -15,10 +15,10 @@ export const doLogin = async (
 };
 
 export const doLogout = async (): Promise<boolean> => {
-  const url = "security/logout";
+  const url = "/api/security/logout";
   const response = await fetch(url, {
     method: "POST",
-    credentials: "same-origin",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
@@ -28,15 +28,19 @@ export const doLogout = async (): Promise<boolean> => {
 };
 
 export const getCurrentUser = async (): Promise<User> => {
-  const url = "security/current-user";
+  const url = "/api/security/current-user";
   const response = await fetch(url, {
     method: "GET",
-    credentials: "same-origin",
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
       Accept: "application/json",
     },
   });
-  const user: User = await response.json();
-  return user;
+
+  if (response.ok) {
+    return response.json();
+  } else {
+    throw new Error("Error getting current user");
+  }
 };

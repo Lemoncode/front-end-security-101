@@ -1,13 +1,13 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { LoginScene } from "scenes";
 import { switchRoutes } from "./routes";
+import { AccountScene } from "scenes/account.scene";
 
-export const RouterComponent: React.FC = () => {
+export const AppRouter: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path={switchRoutes.root} element={<LoginScene />} />
+        <Route path={switchRoutes.root} element={<AccountScene />} />
       </Routes>
     </Router>
   );

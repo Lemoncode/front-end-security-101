@@ -36,8 +36,8 @@ securityApi
 
   .get("/current-user", authenticationMiddleware, async (req, res, next) => {
     try {
-      // const user = await userRepository.getUser(req.userSession?.id);
-      console.log(req);
+      const user = await userRepository.getUser("1");
+      res.send(user);
     } catch (error) {
       next(error);
     }

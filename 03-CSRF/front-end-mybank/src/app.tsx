@@ -1,7 +1,10 @@
 import React from "react";
-import { RouterComponent } from "./core";
+import { AppRouter } from "./core";
 import { AuthProvider } from "core/auth";
+import { AuthRouter } from "core/router/auth-router.component";
 
-export const App: React.FC = ({ children }) => (
-  <AuthProvider router={<RouterComponent />}>{children}</AuthProvider>
+export const App: React.FC = () => (
+  <AuthProvider AuthRouter={AuthRouter}>
+    <AppRouter />
+  </AuthProvider>
 );

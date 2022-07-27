@@ -4,9 +4,10 @@ import { mapAccountListFromModelToApi } from "./account.mappers";
 
 export const accountsApi = Router();
 
-accountsApi.get("/", async (req, res, next) => {
+accountsApi.get("/:id", async (req, res, next) => {
   try {
-    const account = await accountRepository.getAccount();
+    const { id } = req.params;
+    const account = await accountRepository.getAccount(id);
     res.send(mapAccountListFromModelToApi(account));
   } catch (error) {
     next(error);

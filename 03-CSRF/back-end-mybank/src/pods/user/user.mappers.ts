@@ -6,7 +6,6 @@ export const mapUserFromModelToApi = (user: model.User): apiModel.User => ({
   name: user.name,
   email: user.email,
   password: user.password,
-  accountId: user.accountId,
 });
 
 export const mapUserListFromModelToApi = (

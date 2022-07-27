@@ -9,5 +9,4 @@ export interface AuthContextModel {
   user: User;
   logout: () => Promise<void>;
   login: (loginCredential: LoginCredential) => Promise<void>;
-  getCurrentUser: () => Promise<void>;
 }

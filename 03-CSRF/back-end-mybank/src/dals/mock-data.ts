@@ -15,7 +15,6 @@ export const db: DB = {
       name: "User",
       email: "user@email.com",
       password: "test",
-      accountId: "1",
     },
   ],
   accountList: [
@@ -26,6 +25,7 @@ export const db: DB = {
       name: "Gastos mes",
       balance: 1490,
       lastTransaction: "2019-12-09T21:30:00",
+      userId: "1",
     },
   ],
   movementList: [

@@ -5,11 +5,11 @@ import { mapUserToVM } from "./auth.mappers";
 import { User } from "./auth.model";
 
 interface Props {
-  router: React.ReactNode;
+  AuthRouter: React.FC;
 }
 
 export const AuthProvider: React.FC<Props> = (props) => {
-  const { router, children } = props;
+  const { AuthRouter, children } = props;
   const [user, setUser] = React.useState<User>();
 
   React.useEffect(() => {
@@ -17,8 +17,11 @@ export const AuthProvider: React.FC<Props> = (props) => {
   }, []);
 
   const getCurrentUser = async () => {
-    const apiUser = await api.getCurrentUser();
-    setUser(mapUserToVM(apiUser));
+    api
+      .getCurrentUser()
+      .then(mapUserToVM)
+      .then(setUser)
+      .catch(() => {});
   };
 
   const login = async (loginCredential: api.LoginCredential) => {
@@ -27,8 +30,7 @@ export const AuthProvider: React.FC<Props> = (props) => {
   };
 
   const logout = async () => {
-    await api.doLogout();
-    window.history.replaceState(null, null, "/");
+    await api.doLogout().then(() => setUser(null));
   };
 
   return (
@@ -37,10 +39,9 @@ export const AuthProvider: React.FC<Props> = (props) => {
         user,
         login,
         logout,
-        getCurrentUser,
       }}
     >
-      {user ? children : router}
+      {user ? children : <AuthRouter />}
     </AuthContext.Provider>
   );
 };
