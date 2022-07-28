@@ -10,6 +10,42 @@ body {
   font-size: 16px;
 }
 
+.btn_enviar,
+.btn_enviar_transferencia {
+  background: #22c6cb;
+  border: none;
+  padding: 0.8em 1.5em;
+  border-radius: 10px;
+  color: #ffffff;
+  -webkit-transition: all ease 0.2s;
+  transition: all ease 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 900;
+}
+
+.btn_enviar:hover,
+.btn_enviar_transferencia:hover {
+  background: #1b9b9f;
+}
+
+.btn_enviar:active,
+.btn_enviar_transferencia:active {
+  -webkit-box-shadow: inset 0 2px 0 0 rgba(0, 0, 0, 0.1),
+    inset 0 2px 2px 2px rgba(0, 0, 0, 0.2), inset 0 0 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 2px 0 0 rgba(0, 0, 0, 0.1),
+    inset 0 2px 2px 2px rgba(0, 0, 0, 0.2), inset 0 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+.btn_enviar a,
+.btn_enviar_transferencia a {
+  text-decoration: none;
+}
+
+.btn_enviar_transferencia {
+  margin: 10px 0 10px 320px;
+}
+
 h1 {
   font-weight: 300;
   font-size: 2.2rem;
@@ -65,6 +101,9 @@ footer {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .bold {
@@ -207,6 +246,7 @@ form .form_container input.error,
   background-size: cover;
   max-width: 1920px;
   margin: 0 auto;
+  border-radius: 10px;
 }
 
 .login .login_box {
@@ -531,7 +571,7 @@ ul {
   padding: 5px 10px;
   border-bottom: 1px solid #fff;
   color: #000;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
 .navbar-nav a:last-child {
@@ -540,4 +580,24 @@ ul {
 
 .navbar-nav a:hover {
   background-color: #e2e2e2;
+}
+
+.container-edit-email {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.form-edit-email {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-edit-email label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #000;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuthContext } from "core/auth";
 import { routes } from "core";
 import footerImg from "core/content/img/logo_footer.svg";
@@ -8,6 +9,11 @@ export const AppLayout: React.FC = (props) => {
   const { logout, user } = useAuthContext();
   const [isShow, setIsShow] = React.useState<boolean>(false);
 
+  const navigate = useNavigate();
+
+  const handleEditEmailNavigate = () => {
+    navigate(routes.editEmail);
+  };
   return (
     <>
       <header>
@@ -25,7 +31,7 @@ export const AppLayout: React.FC = (props) => {
               <nav>
                 <ul className="navbar-nav">
                   <li>
-                    <a>Change Email</a>
+                    <a onClick={handleEditEmailNavigate}>Change Email</a>
                     <a onClick={logout}>Logout</a>
                     <a onClick={() => setIsShow(false)}>&larr; Back</a>
                   </li>
@@ -36,10 +42,8 @@ export const AppLayout: React.FC = (props) => {
         </div>
       </header>
       {children}
-      <footer id="footer">
-        <div className="container">
-          <img className="footer_logo" src={footerImg} alt="logo footer" />
-        </div>
+      <footer>
+        <img className="footer_logo" src={footerImg} alt="logo footer" />
       </footer>
     </>
   );

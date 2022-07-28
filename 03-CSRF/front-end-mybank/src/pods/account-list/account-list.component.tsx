@@ -17,12 +17,12 @@ export const AccountList: React.FC<Props> = (props) => {
         <span className="account-list-header">Iban</span>
         <span className="account-list-header">Name</span>
         {accountList.map((account) => (
-          <>
-            <Link to={routes.movementList(account.id)} key={account.id}>
+          <React.Fragment key={account.id}>
+            <Link to={routes.movementList(account.id)}>
               <span className="color-iban">{account.iban}</span>
             </Link>
             <span>{account.name}</span>
-          </>
+          </React.Fragment>
         ))}
       </div>
     </div>
