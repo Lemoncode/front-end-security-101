@@ -1,4 +1,4 @@
-import { Account } from "./account.api-model";
+import { Account } from "./account-list.api-model";
 
 export const getAccountList = async (id: string): Promise<Account[]> => {
   const url = `/api/accounts/${id}`;

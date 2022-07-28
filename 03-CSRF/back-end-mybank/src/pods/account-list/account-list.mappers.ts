@@ -1,5 +1,5 @@
 import * as model from "dals";
-import * as apiModel from "./account.api-model";
+import * as apiModel from "./account-list.api-model";
 
 const mapAccountFromModelToApi = (
   account: model.Account

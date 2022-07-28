@@ -1,5 +1,5 @@
 import * as api from "./api";
-import * as viewmodel from "./account.vm";
+import * as viewmodel from "./account-list.vm";
 
 const mapAccountFromApiToVm = (account: api.Account): viewmodel.AccountVm => ({
   id: account.id,

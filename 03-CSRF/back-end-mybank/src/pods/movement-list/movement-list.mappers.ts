@@ -1,5 +1,5 @@
 import * as model from "dals";
-import * as apiModel from "./movement.api-model";
+import * as apiModel from "./movement-list.api-model";
 
 const mapMovementFromModelToApi = (
   movement: model.Movement
@@ -11,6 +11,7 @@ const mapMovementFromModelToApi = (
   transaction: movement.transaction,
   realTransaction: movement.realTransaction,
   accountId: movement.accountId,
+  userId: movement.userId,
 });
 
 export const mapMovementListFromModelToApi = (

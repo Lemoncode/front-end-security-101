@@ -36,7 +36,7 @@ securityApi
 
   .get("/current-user", authenticationMiddleware, async (req, res, next) => {
     try {
-      const user = await userRepository.getUser("1");
+      const user = await userRepository.getUser(req.userSession?.id);
       res.send(user);
     } catch (error) {
       next(error);
@@ -46,4 +46,20 @@ securityApi
   .post("/logout", authenticationMiddleware, async (req, res) => {
     res.clearCookie("authorization");
     res.sendStatus(200);
+  })
+
+  .get("/edit", authenticationMiddleware, async (req, res, next) => {
+    try {
+      const { email } = req.body;
+      const newUserEmail = await userRepository.updateEmail(
+        req.userSession?.id,
+        email
+      );
+      console.log(
+        `User ${req.userSession?.id} email changed to ${newUserEmail}`
+      );
+      res.send("Email changed");
+    } catch (error) {
+      next(error);
+    }
   });

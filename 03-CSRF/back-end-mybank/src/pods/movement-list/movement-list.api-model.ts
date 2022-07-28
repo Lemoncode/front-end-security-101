@@ -6,4 +6,5 @@ export interface Movement {
   transaction: string;
   realTransaction: string;
   accountId: string;
+  userId: string;
 }

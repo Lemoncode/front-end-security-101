@@ -1,5 +1,6 @@
 import React from "react";
 import { Credential, createEmptyCredential } from "./login.vm";
+import headerLogo from "core/content/img/logo_header.svg";
 
 interface Props {
   onSubmit: (credential: Credential) => void;
@@ -22,18 +23,34 @@ export const Login: React.FC<Props> = (props) => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="email">Email: </label>
-        <input type="email" name="email" onChange={updateFieldValue("email")} />
-        <label htmlFor="password">Password: </label>
-        <input
-          type="password"
-          name="password"
-          onChange={updateFieldValue("password")}
-        />
-        <button type="submit">Login</button>
-      </form>
-    </>
+    <div className="login">
+      <header className="header">
+        <img src={headerLogo} className="login_logo" alt="header logo" />
+      </header>
+      <div className="bg-img"></div>
+      <div className="login_box">
+        <h1>Acceso</h1>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="email">Email: </label>
+          <input
+            type="email"
+            name="email"
+            onChange={updateFieldValue("email")}
+          />
+          <label htmlFor="password">Password: </label>
+          <input
+            type="password"
+            name="password"
+            onChange={updateFieldValue("password")}
+          />
+          <button type="submit" className="btn_enviar">
+            Login
+          </button>
+        </form>
+        <h4>
+          Está Usted en un <strong>sitio seguro</strong>
+        </h4>
+      </div>
+    </div>
   );
 };

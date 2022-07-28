@@ -1,11 +1,11 @@
 import React from "react";
 import { useAuthContext } from "core/auth";
-import { AccountVm } from "./account.vm";
-import { Account } from "./account.component";
-import { mapAccountListFromApiToVm } from "./account.mappers";
+import { AccountVm } from "./account-list.vm";
+import { AccountList } from "./account-list.component";
+import { mapAccountListFromApiToVm } from "./account-list.mappers";
 import { getAccountList } from "./api";
 
-export const AccountContainer = () => {
+export const AccountListContainer = () => {
   const { user } = useAuthContext();
   const [accountList, setAccountList] = React.useState<AccountVm[]>([]);
 
@@ -16,8 +16,7 @@ export const AccountContainer = () => {
 
   React.useEffect(() => {
     loadAccountList();
-    console.log(accountList);
   }, []);
 
-  return <Account accountList={accountList} />;
+  return <AccountList accountList={accountList} />;
 };

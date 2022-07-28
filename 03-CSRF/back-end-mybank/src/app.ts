@@ -2,8 +2,8 @@ import express from "express";
 import path from "path";
 import { createRestApiServer } from "core/servers";
 import { envConstants } from "core/constants";
-import { accountsApi } from "pods/account";
-import { movementsApi } from "pods/movement";
+import { accountsApi } from "pods/account-list";
+import { movementsApi } from "pods/movement-list";
 import { userApi } from "pods/user";
 import { securityApi, authenticationMiddleware } from "pods/security";
 

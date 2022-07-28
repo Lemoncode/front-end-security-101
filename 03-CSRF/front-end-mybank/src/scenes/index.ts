@@ -1,2 +1,3 @@
 export * from "./auth";
-export * from "./account.scene";
+export * from "./accounts.scene";
+export * from "./movements.scene";
