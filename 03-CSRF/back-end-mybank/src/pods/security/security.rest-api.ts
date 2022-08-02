@@ -24,6 +24,7 @@ securityApi
         res.cookie("authorization", `Bearer ${token}`, {
           httpOnly: true,
           secure: envConstants.isProduction,
+          sameSite: "strict",
         });
         res.sendStatus(204);
       } else {
@@ -50,10 +51,24 @@ securityApi
 
   .get("/edit", authenticationMiddleware, async (req, res, next) => {
     try {
-      const { email } = req.body;
       const newUserEmail = await userRepository.updateEmail(
         req.userSession?.id,
-        email
+        req.query.email.toString()
+      );
+      console.log(
+        `User ${req.userSession?.id} email changed to ${newUserEmail}`
+      );
+      res.send("Email changed");
+    } catch (error) {
+      next(error);
+    }
+  })
+
+  .post("/edit", authenticationMiddleware, async (req, res, next) => {
+    try {
+      const newUserEmail = await userRepository.updateEmail(
+        req.userSession?.id,
+        req.query.email.toString()
       );
       console.log(
         `User ${req.userSession?.id} email changed to ${newUserEmail}`
