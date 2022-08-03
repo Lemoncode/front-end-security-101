@@ -68,7 +68,7 @@ securityApi
     try {
       const newUserEmail = await userRepository.updateEmail(
         req.userSession?.id,
-        req.query.email.toString()
+        req.body.email
       );
       console.log(
         `User ${req.userSession?.id} email changed to ${newUserEmail}`
