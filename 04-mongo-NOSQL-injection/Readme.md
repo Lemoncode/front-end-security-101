@@ -1,0 +1,3 @@
+- Explicar como montarlo
+- En el primer ejemplo uso de where
+- En el segundo ejemplo la vulnerabilidad de SQL Injection con una cadena de texto
