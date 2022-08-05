@@ -16,14 +16,6 @@ export const run = async () => {
     $where: fn
   });
 
-  /*
-  const user = await dbInstance.collection("users").findOne({
-    $where: function () {
-      const nombre = search;
-      return this.nombre == nombre;
-    },
-  });*/
-
   console.log(user);
 
   await client.close();
