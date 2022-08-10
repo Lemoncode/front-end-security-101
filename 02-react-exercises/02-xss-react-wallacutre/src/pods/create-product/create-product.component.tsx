@@ -50,7 +50,6 @@ export const CreateProduct = () => {
             value={product.description}
             className={classes.textarea}
           />
-          {/* <h2 dangerouslySetInnerHTML={{ __html: hack }}></h2> */}
           <label htmlFor="price">Price:</label>
           <input
             name="price"

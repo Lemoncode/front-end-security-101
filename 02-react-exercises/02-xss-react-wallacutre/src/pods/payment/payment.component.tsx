@@ -16,7 +16,7 @@ export const Payment: React.FC<Props> = (props) => {
       <img src={product.image} alt={product.name} />
       <p className={classes.price}>Amount: {product.price} EUR</p>
 
-      <a href="http://localhost:1235/" className={classes.button}>
+      <a href={product.description} className={classes.button}>
         Pay
       </a>
     </div>
