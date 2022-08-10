@@ -40,3 +40,4 @@ Una de las formas para saltarnos esta restricción es inyectar nuestro código p
 ![](./assets/03.png)
 
 [En este enlace puedes encontrar varios ejemplos de código con inyecciones **XSS**]("https://cheatsheetseries.owasp.org/cheatsheets/XSS_Filter_Evasion_Cheat_Sheet.html")
+
