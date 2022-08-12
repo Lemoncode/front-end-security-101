@@ -90,7 +90,7 @@ _backend-mybank/src/pods/security/security.rest-api.js_
 
 ```
 
-- Podemos ver por la console de _backend-mybank_ que se ha producido el ataque y hemos cambiado la contraseña.
+- Podemos ver por la console de _backend-mybank_ que se ha producido el ataque y hemos cambiado el correo.
 
 ```
 [type-check:watch] 
