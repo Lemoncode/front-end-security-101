@@ -14,8 +14,13 @@
     "scenes": "/src/scenes"
   },
   "scripts": {
-    "start": "run-p -l type-check:watch start:dev",
+    "postinstall": "run-p -l server:install paypal:install",
+    "server:install": "cd server && npm install",
+    "paypal:install": "cd hack-paypal && npm install",
+    "start": "run-p -l type-check:watch start:dev server:start paypal:start",
     "start:dev": "rimraf dist && parcel --open",
+    "server:start": "cd server && npm start",
+    "paypal:start": "cd hack-paypal && npm start",
     "build": "rimraf dist && parcel build",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"
