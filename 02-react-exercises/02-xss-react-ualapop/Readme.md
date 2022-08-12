@@ -2,7 +2,7 @@
 
 ## Instalación
 
-- Hacemos un _npm install_ en el directorio de trabajo que es el 03-CSRF e instalamos todas las dependencias de las 3 apps.
+- Hacemos un _npm install_ en el directorio de trabajo que es el _02-react-exercises/02-xss-react-ualapop_ e instalamos todas las dependencias de las 3 apps.
 
 ```
 npm install
