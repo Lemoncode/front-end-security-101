@@ -26,6 +26,8 @@ form.addEventListener("submit", (event) => {
 	})
 		.then((resp) => {
 			window["authHeader"] = resp.headers.get("Authorization");
+			document.getElementById("MyForm").style.display = "none";
+			document.getElementById("AddBio").style.display = "flex";
 			console.log(...resp.headers);
 		})
 		.catch((err) => console.log(err));
@@ -63,7 +65,7 @@ document.getElementById("getPrivateData").addEventListener("click", (e) => {
 			(resp) =>
 				(document.getElementById(
 					"resultPrivateData"
-				).innerHTML = `Mi nombre es <b>${resp.nombre}</b> y esta es mi historia: <i>${resp.bio}</i>`)
+				).innerHTML = `<p>Mi nombre es <b>${resp.nombre}</b> y esta es mi historia: <i>${resp.bio}</i></p>`)
 		)
 		.catch((error) => console.log(error));
 });
