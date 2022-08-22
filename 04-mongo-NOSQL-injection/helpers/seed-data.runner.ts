@@ -25,7 +25,5 @@ export const run = async () => {
   await dbInstance.collection("users").insertMany(userList);
   console.log("Users inserted");
 
-  
-
   await client.close();
 };

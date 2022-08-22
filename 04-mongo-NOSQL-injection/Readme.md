@@ -29,7 +29,6 @@ exit
 
 - Con find-with-sleep ejecutamos el comando para buscar datos en la base de datos usando el where y la función sleep y vemos que tarda 5 segundos en responder. Y vemos la vulnerabilidad de SQL Injection con una cadena de texto.
 
-
 ```javascript
 > find-with-sleep
 ```
