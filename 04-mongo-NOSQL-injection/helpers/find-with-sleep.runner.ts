@@ -10,10 +10,11 @@ export const run = async () => {
   dbInstance = client.db();
 
   const filter = "'Juan Pérez';sleep(5000)";
-  const fn = 'function () { const search =' + filter + ';return this.name == search;}';
+  const fn =
+    "function () { const search =" + filter + ";return this.name == search;}";
 
   const user = await dbInstance.collection("users").findOne({
-    $where: fn
+    $where: fn,
   });
 
   console.log(user);

@@ -16,7 +16,7 @@ export const run = async () => {
       return this.name == search;
     },
   });
-  
+
   console.log(user);
 
   await client.close();
