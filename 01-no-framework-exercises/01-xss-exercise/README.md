@@ -1,4 +1,4 @@
-# 01 No framework exercise 01 
+# No framework - ejercicio 01 
 
 En este ejemplo vamos a tener un formulario y un texto, este texto lo vamos a mostrar en una etiqueta _span_. Vamos a ver si en ese texto podemos inyectar un script y ejecutar un código malicioso.
 

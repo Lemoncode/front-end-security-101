@@ -1,4 +1,4 @@
-# 01 No framework exercise 02 
+# No framework - exercise 02 
 
 En este ejemplo vamos a tener una primera pantalla donde vamos a logarnos, una vez logados vamos a ver que en nuestro objeto global _window_ tenemos una autenticación de cabecera. Veremos si podemos inyectar un script y ejecutar un código malicioso para poder sustraer la autentificación de cabecera. 
 
