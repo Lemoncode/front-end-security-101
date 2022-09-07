@@ -105,4 +105,5 @@ Si inspeccionamos el código en nuestro navegador este sería el resultado:
 
 <img src="./assets/08.png" alt="css-loader" style="zoom:67%;" />
 
+
 [En este enlace puedes encontrar varios ejemplos de código con inyecciones **XSS**]("https://cheatsheetseries.owasp.org/cheatsheets/XSS_Filter_Evasion_Cheat_Sheet.html")
