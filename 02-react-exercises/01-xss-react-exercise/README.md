@@ -54,7 +54,7 @@ Soy el contenido del input
 
 Si inspeccionamos el código vemos que nos pinta el texto y nos ignora el _script_ sin pintarlo por pantalla, es decir, lo está ignorando por seguridad.
 
-<img src="./assets/01.png" style="zoom:67%;" />
+<img src="./assets/01.PNG" style="zoom:67%;" />
 
 
 
@@ -68,7 +68,7 @@ Vamos a hacer un primer ejemplo introduciendo un *alert* como ya hicimos:
 
 Y nos mostaría el siguiente resultado:
 
-<img src="./assets/02.png" style="zoom: 50%;" />
+<img src="./assets/02.PNG" style="zoom: 50%;" />
 
 Incluso otro ejemplo sería modificar el _background_:
 
@@ -78,7 +78,7 @@ Incluso otro ejemplo sería modificar el _background_:
 
 Y veríamos nuestro fondo cambiado:
 
-<img src="./assets/03.png" style="zoom: 50%;" />
+<img src="./assets/03.PNG" style="zoom: 50%;" />
 
 
 
