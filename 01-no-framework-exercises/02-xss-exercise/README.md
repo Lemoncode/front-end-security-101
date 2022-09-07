@@ -1,25 +1,51 @@
-# 02 XSS Exercise with JavaScript
+# 01 No framework exercise 02 
 
+En este ejemplo vamos a tener una primera pantalla donde vamos a logarnos, una vez logados vamos a ver que en nuestro objeto global _window_ tenemos una autenticación de cabecera. Veremos si podemos inyectar un script y ejecutar un código malicioso para poder sustraer la autentificación de cabecera. 
+
+# Manos a la obra
 
 ## Instalación
 
-- Hacemos un _npm install_ en el directorio de trabajo que es el _01-no-framework-exercises/02-xss-exercise_ e instalamos todas las dependencias de las 3 apps.
+Ejecutamos _npm install_ en el directorio de trabajo que es el _01-no-framework-exercises/02-xss-exercise_ e instalamos todas las dependencias de las 3 apps.
 
 ```javascript
 npm install
 ```
 
-- Podemos arrancar las apps con _npm start_, o arrancarlas individualmente. 
+Podemos arrancar las apps con _npm start_, o arrancarlas individualmente. 
 
 ```
 npm start
 
 ```
+
+Abrimos el navegador y vamos a la url: 
+
+[**http://localhost:1234**](http://localhost:1234)
+
 ## Pasos:
 
-- Entrar en la aplicación usando como usuario _admin_ y contraseña _admin_.
-- Una vez iniciada la sesión hemos recibido nuestro token para las cabeceras. Y ahora vamos a ver cómo sustraerlas.
-- Insertamos este _achor_ en el textearea y enviamos la petición al servidor.
+Nos logamos en la aplicación usando como usuario _admin_ y contraseña _test_.
+
+Una vez logados vamos a inspeccionar la consola e insertar en siguiente comando:
+
+```javascript
+window['authHeader']
+```
+
+Y obtenemos el _token_ que hemos enviado a través de las cabeceras.
+
+<img src="./assets/01.png" alt="token recibido en consola" />
+
+Estamos guardando en una variable global _authHeader_, esto sería una mala práctica pero nos puede puede pasar en un caso real.
+
+_./src/index.ts_
+
+<img src="./assets/02.png" alt="token recibido en consola" style="zoom:67%;" />
+
+Una vez iniciada la sesión hemos recibido nuestro token para las cabeceras. Y ahora vamos a ver cómo sustraerlas.
+
+Vamos a insertar este _anchor_ en el _textarea_ y enviamos la petición al servidor.
 
 ```javascript
 <a onClick="alert('Gracias por su token de autorización: '+window.authHeader)">
@@ -27,20 +53,20 @@ npm start
 </a>
 ```
 
-- Generará un párrafo debajo del textarea y nos dirá que hagamos clic en él para ver nuestra biografía introducida.
+Generará un párrafo debajo del _textarea_ y haremos clic en él para ver nuestra biografía introducida.
 
 ```
 Click aquí para ver tu biografía
 ```
 
-- Y si hacemos clic en él recibiremos una alerta que dice:
+<img src="./assets/03.png" alt="token recibido en consola" style="zoom:67%;" />
 
-```
-Gracias por su token de autorización: <token>
-```
+Y si hacemos clic en él recibiremos una alerta con el nuestro _token_:
 
-- Otra forma de obtener el token sería introducir en el textarea una imagen como hicimos en el ejemplo anterior. Y cuando da un error porque no ha podido obtener la imagen, sale una alerta y obtenemos el token.
+<img src="./assets/04.png" alt="token recibido en consola" style="zoom:67%;" />
 
-```
+Otra forma de obtener el token sería introducir en el _textarea_ una imagen como hicimos en el ejemplo anterior. Nos aparecería también el _alert_ con nuestro _token_.
+
+```html
 <img src='x' onerror='alert("Gracias por su token de autorización: "+window.authHeader)'>
 ```

@@ -24,6 +24,10 @@ Una vez instaladas nuestras dependencias vamos a hacer **`npm start`** para arra
 npm start
 ```
 
+Abrimos el navegador y vamos a la url: 
+
+[**http://localhost:1234**](http://localhost:1234)
+
 # Pasos
 
 Vamos a comenzar añadiendo el siguiente código **html** dentro del input de nuestro formulario y enviamos.
