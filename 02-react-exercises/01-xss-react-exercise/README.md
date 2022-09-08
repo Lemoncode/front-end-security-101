@@ -6,6 +6,8 @@ En el siguiente ejemplo veremos el problema de usar _dangerouslySetInnerHTML_ y 
 
 # Manos a la obra
 
+>## Instalación:
+
 Vamos a ejecutar desde la línea de comandos **`npm install`** para instalar las dependencias que tenemos en nuestro _package.json_.
 
 ```javascript
@@ -22,7 +24,7 @@ Abrimos el navegador y vamos a la url:
 
 [**http://localhost:1234**](http://localhost:1234)
 
-# Pasos
+>## Pasos
 
 Tenemos un _input_  donde vamos a introducir un texto, el cuál lo mostraremos en pantalla debajo del formulario, justo después de hacer _submit_. 
 
@@ -82,7 +84,7 @@ Y veríamos nuestro fondo cambiado:
 
 
 
-## Cómo solucionarlo
+>## Cómo solucionarlo
 
 Para solucionar esta vulnerabilidad podemos utilizar una librería de terceros llamada [_**DomPurify**_](https://www.npmjs.com/package/dompurify?activeTab=readme) que nos eliminará todo el _HTML_ peligroso y nos devolverá un _HTML_ limpio.
 

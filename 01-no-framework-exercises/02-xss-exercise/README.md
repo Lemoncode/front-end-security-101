@@ -4,7 +4,7 @@ En este ejemplo vamos a tener una primera pantalla donde vamos a logarnos, una v
 
 # Manos a la obra
 
-## Instalación
+>## Instalación
 
 Ejecutamos _npm install_ en el directorio de trabajo que es el _01-no-framework-exercises/02-xss-exercise_ e instalamos todas las dependencias de las 3 apps.
 
@@ -23,7 +23,7 @@ Abrimos el navegador y vamos a la url:
 
 [**http://localhost:1234**](http://localhost:1234)
 
-## Pasos:
+>## Pasos:
 
 Nos logamos en la aplicación usando como usuario _admin_ y contraseña _test_.
 

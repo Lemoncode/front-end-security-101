@@ -13,6 +13,8 @@ Para solucionar esto _mdn_ nos recomienda usar:
 
 # Manos a la obra
 
+>## Instalación:
+
 Vamos a ejecutar desde la línea de comandos **`npm install`** para instalar las dependencias que tenemos en nuestro _package.json_.
 
 ```javascript
@@ -28,7 +30,7 @@ Abrimos el navegador y vamos a la url:
 
 [**http://localhost:1234**](http://localhost:1234)
 
-# Pasos
+>## Pasos
 
 Vamos a comenzar añadiendo el siguiente código **html** dentro del input de nuestro formulario y enviamos.
 
@@ -77,7 +79,7 @@ Al enviar vemos que la imagen sale errónea pero hemos ejecutado código _javasc
 
 Esto es un ejemplo básico, en las siguientes demos veremos cómo podemos sustraer cookies, headers y varios ejemplos más.
 
-## Cómo solucionarlo
+>## Cómo solucionarlo
 
 Para solucionar esto,  _mdn_ nos recomienda que utilicemos _textContent_. 
 

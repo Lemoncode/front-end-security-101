@@ -1,4 +1,3 @@
-# 03 CSRF
 
 CSRF(Cross-Site Request Forgery) es un tipo de ataque que engaña al usuario para que ejecute acciones no deseadas en una aplicación web en la que está auntenticado. El atacante se aprovecha de la confianza que el usuario tiene en la aplicación y la utiliza para realizar acciones en su nombre. CSRF utiliza esta confianza para enviar una petición a la aplicación con la cookie de sesión. La aplicación web no tiene forma de distinguir entre una solicitud legítima y una solicitud CSRF, por lo que procesa la solicitud como si viniera del usuario.
 
@@ -6,7 +5,7 @@ En este ejemplo vamos a ver como se puede realizar un ataque CSRF, los errores q
 
 # Manos a la obra
 
-## Instalación
+>## Instalación
 
 Hacemos un _npm install_ en el directorio de trabajo que es el 03-CSRF e instalamos todas las dependencias de las 3 apps.
 
@@ -24,6 +23,8 @@ npm start
 Abrimos el navegador y accedemos a la app de frontend en la ruta http://localhost:1234
 
 <img src="./assets/01.png" style="zoom:67%;" />
+
+>## Pasos 
 
 Una vez que arrancamos el frontend y el backend de mybank, podemos logearnos usando:
 
