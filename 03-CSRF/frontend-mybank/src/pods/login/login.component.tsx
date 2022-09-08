@@ -43,6 +43,7 @@ export const Login: React.FC<Props> = (props) => {
             name="password"
             onChange={updateFieldValue("password")}
           />
+          <p>¿has olvidado tu contraseña?</p>
           <button type="submit" className="btn_enviar">
             Login
           </button>

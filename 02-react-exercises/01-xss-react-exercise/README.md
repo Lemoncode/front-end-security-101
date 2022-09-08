@@ -82,7 +82,7 @@ Y veríamos nuestro fondo cambiado:
 
 
 
-## ¿Cómo solucionarlo?
+## Cómo solucionarlo
 
 Para solucionar esta vulnerabilidad podemos utilizar una librería de terceros llamada [_**DomPurify**_](https://www.npmjs.com/package/dompurify?activeTab=readme) que nos eliminará todo el _HTML_ peligroso y nos devolverá un _HTML_ limpio.
 

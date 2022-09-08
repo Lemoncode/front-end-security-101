@@ -77,7 +77,7 @@ Al enviar vemos que la imagen sale errónea pero hemos ejecutado código _javasc
 
 Esto es un ejemplo básico, en las siguientes demos veremos cómo podemos sustraer cookies, headers y varios ejemplos más.
 
-## Cómo arreglarlo
+## Cómo solucionarlo
 
 Para solucionar esto,  _mdn_ nos recomienda que utilicemos _textContent_. 
 

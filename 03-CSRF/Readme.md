@@ -1,75 +1,111 @@
 # 03 CSRF
 
+CSRF(Cross-Site Request Forgery) es un tipo de ataque que engaña al usuario para que ejecute acciones no deseadas en una aplicación web en la que está auntenticado. El atacante se aprovecha de la confianza que el usuario tiene en la aplicación y la utiliza para realizar acciones en su nombre. CSRF utiliza esta confianza para enviar una petición a la aplicación con la cookie de sesión. La aplicación web no tiene forma de distinguir entre una solicitud legítima y una solicitud CSRF, por lo que procesa la solicitud como si viniera del usuario.
+
+En este ejemplo vamos a ver como se puede realizar un ataque CSRF, los errores que se pueden cometer al crear una aplicación web y como se puede evitar este tipo de ataques.
+
+# Manos a la obra
+
 ## Instalación
 
-- Hacemos un _npm install_ en el directorio de trabajo que es el 03-CSRF e instalamos todas las dependencias de las 3 apps.
+Hacemos un _npm install_ en el directorio de trabajo que es el 03-CSRF e instalamos todas las dependencias de las 3 apps.
 
 ```
 npm install
 ```
 
-- Podemos arrancar las apps con _npm start_, o arrancarlas mejor individualmente para ver el mensaje por la consola de la app de backend cuando se produzca el ataque.
+Podemos arrancar las apps con _npm start_, o arrancarlas mejor individualmente para ver el mensaje por la consola de la app de backend cuando se produzca el ataque.
 
 ```
 npm start
 
 ```
 
-- Una vez que arrancamos el frontend y el backend de mybank, podemos logearnos usando:
+Abrimos el navegador y accedemos a la app de frontend en la ruta http://localhost:1234
+
+<img src="./assets/01.png" style="zoom:67%;" />
+
+Una vez que arrancamos el frontend y el backend de mybank, podemos logearnos usando:
 
 ```
-
 email: user@email.com
 password: test
-
 ```
 
-- Ya logeado podemos inspeccionar las _dev tools_ para ver que dentro de _Application_ tenemos almecenada nuestra cookie.
+Ya logeado podemos inspeccionar las _dev tools_ para ver que dentro de _Application_ tenemos almecenada nuestra cookie.
 
-- Arrancamos a frontend-chupichuli que se abría en _localhost:1235_ esta no se abrirá automáticamente, en el navegador. Y podemos simular que nos han enviado un correo y hemos pinchado en el enlace y se ha abierto en una nueva pestaña.
+<img src="./assets/02.png" style="zoom:67%;" />
 
-- Dentro de la la ruta _frontend-chupilchuli/src/index.html_, tenemos un fetch comentado. Como está ahora mismo sería seguro y no se relaizaría el CSRF.
+Arrancamos a _frontend-chupichuli_ desde otra terminal.
 
-- Y si entramos en las _dev tools_ en la consola nos aparece lo siguiente:
+_.03-CSRF/frontend-chupichuli_
 
+```bash
+npm start
 ```
-Failed to load resource: the server responded with a status of 405 (Method Not Allowed)
+
+Abrimos nuestro navegador en la ruta http://localhost:1235, aquí vamos a simular que nos han enviado un correo con un enlace malicioso.
+Hemos creado un enlace que nos redirige a una fake web de noticias que nos simula el ataque CSRF.
+
+Dentro de la la ruta _frontend-chupilchuli/src/index.html_, tenemos un fetch comentado. Como está ahora mismo sería seguro y no se relaizaría el CSRF.
+
+```javascript
+ <script>
+    // Esto es CSRF con post
+    fetch("/api/security/edit", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: "hack@hacker.com",
+      }),
+  </script>
 ```
 
-- Pero si descomentamos el CSRF con get. 
+Si entramos en las _dev tools_ en la consola nos dice que el servidor ha respondido con un 405, método no permitio y no se ha podido realizar la petición. Es decir, estamos seguros que no se ha realizado el ataque.
+
+<img src="./assets/03.png" style="zoom:67%;" />
+
+Ahora vamos a hacer la simulación de utilizar el método GET, en vez del método POST para realizar peticiones que modifican datos en el servidor, ya que mucha gente en el día de hoy siguen utilizándolo para esto.
+
+Este cambio es un error, ya que el método GET no debería modificar datos en el servidor. Si utilizamos el método GET para realizar una petición que modifica datos en el servidor, estamos abriendo la puerta a un ataque CSRF.
+
+Vamos a refactorizar nuestro código:
 
 _frontend-chupilchuli/src/index.html_
 
 ```diff
 <script>
-      // Esto es CSRF con post
-      // fetch("/api/security/edit", {
-      //   method: "POST",
-      //   credentials: "include",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({
-      //     email: "hack@hacker.com",
-      //   }),
-      // });
-      // Esto es CSRF con get
-      fetch("http://localhost:3000/api/security/edit?" +
-        new URLSearchParams({
-                    email: "hack@hacker.com",
-        }), {
-        method: "GET",
-        credentials: "include",
-      })
-        .then((response) => response.text())
-        .then((text) => console.log(text))
-        .catch((error) => console.log(error));
+-       Esto es CSRF con post
+-       fetch("/api/security/edit", {
+-         method: "POST",
+-         credentials: "include",
+-         headers: {
+-           "Content-Type": "application/json",
+-         },
+-         body: JSON.stringify({
+-           email: "hack@hacker.com",
+-         }),
+-       });
++       Esto es CSRF con get
++      fetch("http://localhost:3000/api/security/edit?" +
++        new URLSearchParams({
++                    email: "hack@hacker.com",
++        }), {
++        method: "GET",
++        credentials: "include",
++      })
++        .then((response) => response.text())
++        .then((text) => console.log(text))
++        .catch((error) => console.log(error));
     </script>
 ```
+
 Y vamos a nuestro backend a _backend-mybank/src/pods/security/security.rest-api.js_ al _endpoint_ de _edit_, y cambiamos el método _post_ por _get_.
 
 _backend-mybank/src/pods/security/security.rest-api.js_
-
 
 ```diff
 - .post("/edit", authenticationMiddleware, async (req, res, next) =>
@@ -89,16 +125,8 @@ _backend-mybank/src/pods/security/security.rest-api.js_
   });
 
 ```
+Volvemos a repetir la simulación de la apertura de nuestra aplicación maliciosa, y vemos que en la consola del _backend_ de _mybank_ nos aparece el mensaje de que el email ha sido cambiado.
 
-- Podemos ver por la console de _backend-mybank_ que se ha producido el ataque y hemos cambiado el correo.
+<img src="./assets/04.png" style="zoom:67%;" />
 
-```
-[type-check:watch] 
-[type-check:watch] 
-[type-check:watch] 14:48:24 - Found 0 errors. Watching for file changes.
-[start:dev       ] Server ready at port 3000
-[start:dev       ] User 1 email changed to hack@hacker.com
-```
-
-- Y ahora podríamos entrar en he perdido mi contraseña y cambiarla sin ningún problema y hacer en la aplicación de mibank lo que quisiéramos.
-
+Ahora podríamos entrar en he perdido mi contraseña y cambiarla sin ningún problema y hacer en la aplicación de _mibank_ lo que quisiéramos.

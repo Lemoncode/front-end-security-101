@@ -190,6 +190,10 @@ form .form_container input.error,
   border-color: #f44336;
 }
 
+.login p {
+  cursor: pointer;
+}
+
 .form_container {
   padding: 1.5em 0;
 }

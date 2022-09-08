@@ -49,7 +49,7 @@ securityApi
     res.sendStatus(200);
   })
 
-  .get("/edit", authenticationMiddleware, async (req, res, next) => {
+  .post("/edit", authenticationMiddleware, async (req, res, next) => {
     try {
       const newUserEmail = await userRepository.updateEmail(
         req.userSession?.id,
