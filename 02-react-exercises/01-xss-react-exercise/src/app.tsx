@@ -1,12 +1,10 @@
 import React from "react";
-import DOMPurify from 'dompurify';
 import * as classes from "./app.styles";
 import logo from "./content/logo_2.png";
 
 export const App: React.FC = () => {
   const [input, setInput] = React.useState("");
   const [output, setOutput] = React.useState("");
-	const sanitizer = DOMPurify.sanitize;
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInput(e.target.value);
@@ -36,8 +34,7 @@ export const App: React.FC = () => {
         </div>
       </form>
 
-      {/* <h2 dangerouslySetInnerHTML={{ __html: output }}></h2> */}
-			<h2 dangerouslySetInnerHTML={{ __html: sanitizer(output) }}></h2>
+			<h2 dangerouslySetInnerHTML={{ __html: output }}></h2>
       <img src={logo} alt="logo" className={classes.image} />
     </div>
   );
