@@ -8,7 +8,7 @@ export const root = css`
 	background-color: #fff;
 	border-radius: 2rem;
 	padding: 2rem;
-	max-width: 30%;
+	width: 30%;
 `;
 
 export const image = css`

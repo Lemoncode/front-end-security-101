@@ -9,5 +9,4 @@ export const saveProduct = async (product: Product) => {
       "Content-Type": "application/json",
     },
   });
-  console.log(response);
 };
