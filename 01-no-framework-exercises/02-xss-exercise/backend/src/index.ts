@@ -14,7 +14,7 @@ app.use(
 app.use(express.json());
 
 app.post("/login", (req, res) => {
-	if (req.body.user === "admin" && req.body.password === "admin") {
+	if (req.body.user === "admin" && req.body.password === "test") {
 		return res
 			.setHeader("Authorization", "Bearer123456789")
 			.send("Login success")

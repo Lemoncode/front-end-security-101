@@ -19,14 +19,14 @@ export const Product: React.FC<Props> = (props) => {
 			/>
 			<p className={classes.price}>{product.price} EUR</p>
 			<p className={classes.name}>{product.name}</p>
-			<p>{product.description}</p>
+			<p dangerouslySetInnerHTML={{__html: product.description}}></p>
 			<div className={classes.buttonContainer}>
-				<Button route={routes.productList} label="Back to Product List" />
 				<Button
 					route={routes.payment(product.id.toString())}
 					label="Buy"
 					className={classes.buttonBuy}
 				/>
+				<Button route={routes.productList} label="Back to Product List" />
 			</div>
 		</div>
 	);

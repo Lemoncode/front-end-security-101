@@ -49,7 +49,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 20px;
-	width: 40%;
+	width: 65%;
 }
 
 #name {
@@ -59,7 +59,7 @@
 }
 
 #submit {
-	width: 40%;
+	width: 20%;
 	height: 30px;
 	background-color: #416269;
 	color: aliceblue;

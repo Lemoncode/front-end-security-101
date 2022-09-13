@@ -15,7 +15,7 @@ export const input = css`
 	border: 2px solid #d8d800;
 	border-radius: 6px;
 	outline-color: #72c74b;
-	width: 100%;
+	width: 950px;
 `;
 
 export const formContainer = css`
