@@ -16,11 +16,11 @@
   "scripts": {
     "postinstall": "run-p -l server:install paypal:install",
     "server:install": "cd server && npm install",
-    "paypal:install": "cd hack-paypal && npm install",
+    "paypal:install": "cd fake-paypal && npm install",
     "start": "run-p -l type-check:watch start:dev server:start paypal:start",
     "start:dev": "rimraf dist && parcel --open",
     "server:start": "cd server && npm start",
-    "paypal:start": "cd hack-paypal && npm start",
+    "paypal:start": "cd fake-paypal && npm start",
     "build": "rimraf dist && parcel build",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"
@@ -39,6 +39,7 @@
     "@emotion/css": "^11.9.0",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "dompurify": "^2.4.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-router-dom": "^6.3.0"
