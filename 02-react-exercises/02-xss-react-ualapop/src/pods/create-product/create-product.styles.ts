@@ -37,4 +37,5 @@ export const button = css`
   font-size: 1rem;
   font-weight: bold;
   padding: 1rem;
+  cursor: pointer;
 `;

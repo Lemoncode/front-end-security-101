@@ -37,15 +37,8 @@ Ya logeado podemos inspeccionar las _dev tools_ para ver que dentro de _Applicat
 
 <img src="./assets/02.png" style="zoom:67%;" />
 
-Arrancamos a _frontend-chupichuli_ desde otra terminal.
 
-_.03-CSRF/frontend-chupichuli_
-
-```bash
-npm start
-```
-
-Abrimos nuestro navegador en la ruta http://localhost:1235, aquí vamos a simular que nos han enviado un correo con un enlace malicioso.
+Abrimos ahora nuestro navegador en la ruta http://localhost:1235, aquí vamos a simular que nos han enviado un correo con un enlace malicioso.
 Hemos creado un enlace que nos redirige a una fake web de noticias que nos simula el ataque CSRF.
 
 Dentro de la la ruta _frontend-chupilchuli/src/index.html_, tenemos un fetch comentado. Como está ahora mismo sería seguro y no se relaizaría el CSRF.

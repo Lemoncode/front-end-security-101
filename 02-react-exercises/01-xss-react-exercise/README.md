@@ -28,7 +28,7 @@ Abrimos el navegador y vamos a la url:
 
 Tenemos un _input_  donde vamos a introducir un texto, el cuál lo mostraremos en pantalla debajo del formulario, justo después de hacer _submit_. 
 
-Para esto hemos hemos creado un estado donde almacenaremos el valor del _input_ y luego lo pintaremos en un _h2_ con la ayuda de _*dangerouslySetInnerHTML*_.
+Para esto hemos creado un estado donde almacenaremos el valor del _input_ y luego lo pintaremos en un _h2_ con la ayuda de _*dangerouslySetInnerHTML*_.
 
 *./src/app.tsx*
 

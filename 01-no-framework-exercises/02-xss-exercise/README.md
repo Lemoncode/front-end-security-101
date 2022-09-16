@@ -35,13 +35,13 @@ window['authHeader']
 
 Y obtenemos el _token_ que hemos enviado a través de las cabeceras.
 
-<img src="./assets/01.png" alt="token recibido en consola" />
+<img src="./assets/01.PNG" alt="token recibido en consola" />
 
 Estamos guardando en una variable global _authHeader_, esto sería una mala práctica pero nos puede puede pasar en un caso real.
 
-_./src/index.ts_
+_./frontend/src/index.ts_
 
-<img src="./assets/02.png" alt="token recibido en consola" style="zoom:67%;" />
+<img src="./assets/02.PNG" alt="token recibido en consola" style="zoom:67%;" />
 
 Una vez iniciada la sesión hemos recibido nuestro token para las cabeceras. Y ahora vamos a ver cómo sustraerlas.
 
@@ -59,7 +59,7 @@ Generará un párrafo debajo del _textarea_ y haremos clic en él para ver nuest
 Click aquí para ver tu biografía
 ```
 
-<img src="./assets/03.png" alt="token recibido en consola" style="zoom:67%;" />
+<img src="./assets/03.PNG" alt="token recibido en consola" style="zoom:67%;" />
 
 Y si hacemos clic en él recibiremos una alerta con el nuestro _token_:
 
