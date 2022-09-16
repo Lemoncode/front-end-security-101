@@ -21,7 +21,6 @@ export const App: React.FC = () => {
       <h1>Ataque Cross Site Scripting(XSS) con React ejercicio 2</h1>
 
       <a
-        // href="https://lemoncode.net/"
         href="javascript:alert('la hemos liado')"
         className={classes.button}
       >
