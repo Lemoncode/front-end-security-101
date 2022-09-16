@@ -1,12 +1,12 @@
-# XSS con React - Ejercicio 1
+# XSS con React - Ejercicio 2
 
-Si utilizamos un _framework_ tenemos protección adicional contra ataques xss, pero ¿es esto siempre así?. En una aplicación es muy común que te pidan añadir código HTML, en _JavaScript_ utilizamos _innerHTML_, pero _React_ nos ofrece su alternativa  [*dangerouslySetInnerHTML*](https://reactjs.org/docs/dom-elements.html), pero esto puede llegar a ser muy peligroso para la seguridad de nuestra aplicación. Para evitar esto se recomienda el uso de *Markdown*, que en principio no acepta _HTML_ aunque se podría configurar para que sí lo acepte. 
+En este ejemplo vamos a ver como se comporta React ante un ataque XSS en el que se inyecta código JavaScript en una etiqueta anchor.
 
-En el siguiente ejemplo veremos el problema de usar _dangerouslySetInnerHTML_ y utilizaremos una librería externa, llamada DomPurify, para arreglar este agujero de seguridad.
+Para ello vamos a tener un _input_ en el que vamos a poder escribir la URL a la que queremos navegar. Cuando pulsemos el botón de _Ir_ se nos navegará a la URL que hayamos escrito.
 
 # Manos a la obra
 
->## Instalación:
+> ## Instalación:
 
 Vamos a ejecutar desde la línea de comandos **`npm install`** para instalar las dependencias que tenemos en nuestro _package.json_.
 
@@ -20,108 +20,95 @@ Una vez instaladas nuestras dependencias vamos a hacer **`npm start`** para arra
 npm start
 ```
 
-Abrimos el navegador y vamos a la url: 
+Abrimos el navegador y vamos a la url:
 
 [**http://localhost:1234**](http://localhost:1234)
 
->## Pasos
+> ## Pasos
 
-Tenemos un _input_  donde vamos a introducir un texto, el cuál lo mostraremos en pantalla debajo del formulario, justo después de hacer _submit_. 
+Tenemos un _input_ donde vamos a introducir una dirección web. Cuando pulsemos el botón de _Ir_ nos navegará a la URL que hayamos escrito.
 
-Para esto hemos creado un estado donde almacenaremos el valor del _input_ y luego lo pintaremos en un _h2_ con la ayuda de _*dangerouslySetInnerHTML*_.
-
-*./src/app.tsx*
-
-```tsx
-import React from "react";
-import * as classes from "./app.styles";
-import logo from "./content/logo_2.png";
-
-export const App: React.FC = () => {
-  const [input, setInput] = React.useState("");
-  const [output, setOutput] = React.useState("");
-.....
-  <h2 dangerouslySetInnerHTML={{ __html: output }}></h2>
-.....
-```
-
-Si probamos como hicimos en el ejemplo anterior e introducimos una etiqueta *script* y hacemos la petición:
+_./src/app.tsx_
 
 ```javascript
-Soy el contenido del input
-<script>
-  alert("soy un script de alert");
-</script>
+......
+ <input
+      value={enlace}
+      onChange={(e) => setEnlace(e.target.value)}
+      className={classes.input}
+    />
+
+    <a href={enlace} className={classes.button}>
+      Ir
+    </a>
+......
 ```
 
-Si inspeccionamos el código vemos que nos pinta el texto y nos ignora el _script_ sin pintarlo por pantalla, es decir, lo está ignorando por seguridad.
+Vamos a empezar probando a la URL de lemoncode:
 
-<img src="./assets/01.PNG" style="zoom:67%;" />
-
-
-
-Pero podemos saltarnos esta seguridad haciendo el uso del evento *onerror* la etiqueta *img* como hicimos en el ejemplo anterior.
-
-Vamos a hacer un primer ejemplo introduciendo un *alert* como ya hicimos:
-
-```html
-<img src='x' onerror='alert("la hemos liao")'>
+```bash
+https://lemoncode.net
 ```
 
-Y nos mostaría el siguiente resultado:
+<img src="./assets/01.png" style="zoom:67%;" />
 
-<img src="./assets/02.PNG" style="zoom: 50%;" />
+Vemos que nos navega correctamente a la página de lemoncode.
 
-Incluso otro ejemplo sería modificar el _background_:
+<img src="./assets/02.png" style="zoom:67%;" />
 
-```html
-<img src='x' onerror="document.body.background='https://www.icegif.com/wp-content/uploads/2022/01/icegif-179.gif'">
+Ahora vamos a probar a introducir una URL maliciosa:
+
+```javascript
+javascript: alert("la hemos liado");
 ```
 
-Y veríamos nuestro fondo cambiado:
+Vemos que nos muestra un alert con el mensaje que hemos escrito.
 
-<img src="./assets/03.PNG" style="zoom: 50%;" />
+<img src="./assets/04.png" style="zoom:67%;" />
 
+Si ahora vemso nuestro archivo _package.json_
 
+<img src="./assets/03.png" style="zoom:67%;" />
 
->## Cómo solucionarlo
+Vemos que tenemos _react_ y _react-dom_ en la versión 17.0.1., podemos pensar que esto es un problema de la versión de _react_ y que si actualizamos a la última versión esto ya no nos va a pasar.
 
-Para solucionar esta vulnerabilidad podemos utilizar una librería de terceros llamada [_**DomPurify**_](https://www.npmjs.com/package/dompurify?activeTab=readme) que nos eliminará todo el _HTML_ peligroso y nos devolverá un _HTML_ limpio.
+Vamos a desinstalar _react_ y _react-dom_ y a instalar la última versión. Y hacemos lo mismo con los _types_.
 
-Vamos a empezar por su instalación, abrimos nuestra terminal y lo instalamos:
+Empezamos borrando la carpeta de _node_modules_ y desiinstalamos _react_ y _react-dom_:
 
-```
-npm install dompurify --save
-```
-
-Ahora vamos dentro de _./src/app.tsx_ y vamos a refactorizar nuestro código y hacer uso de esta libería.
-
-```diff
-import React from "react";
-+ import DOMPurify from 'dompurify';
-import * as classes from "./app.styles";
-import logo from "./content/logo_2.png";
-
-export const App: React.FC = () => {
-  const [input, setInput] = React.useState("");
-  const [output, setOutput] = React.useState("");
-+ const sanitizer = DOMPurify.sanitize;
-.....
-
--           <h2 dangerouslySetInnerHTML={{ __html: output }}></h2> 
-+    		<h2 dangerouslySetInnerHTML={{ __html: sanitizer(output) }}></h2>
-      <img src={logo} alt="logo" className={classes.image} />
-    </div>
-  );
-};
+```bash
+npm uninstall react react-dom --save
 ```
 
-Si volvemos a introducir el código malicioso por el input:
+Hacemos lo mismo con los _types_:
 
-```html
-<img src='x' onerror="document.body.background='https://www.icegif.com/wp-content/uploads/2022/01/icegif-179.gif'">
+```bash
+npm uninstall @types/react @types/react-dom --save-dev
 ```
 
-Vemos que ya no modifica el _background_ de nuestra aplicación.
+Borramos el _package-lock.json_ e instalamos la última versión estable de _react_ y _react-dom_:
 
-<img src="./assets/04.png" style="zoom: 50%;" />
+```bash   
+npm install react react-dom --save
+```
+
+Y hacemos lo mismo con los _types_:
+
+```bash
+npm install @types/react @types/react-dom --save-dev
+```
+
+Ahora arrancamos nuestra aplicación:
+
+```bash
+npm start
+```
+
+Y probamos a introducir la URL maliciosa:
+
+```
+javascript: alert("la hemos liado");
+```
+Y vemos que nos sigue mostrando el alert. Así que con la versión estable de _React_ nos sigue ocurriendo lo mismo. Podemos inyectar código malicioso en una etiqueta _anchor_.
+
+<img src="./assets/04.png" style="zoom:67%;" />
