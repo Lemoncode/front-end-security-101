@@ -13,13 +13,14 @@ Para solucionar esto _mdn_ nos recomienda usar:
 
 # Manos a la obra
 
->## Instalación:
+> ## Instalación:
 
 Vamos a ejecutar desde la línea de comandos **`npm install`** para instalar las dependencias que tenemos en nuestro _package.json_.
 
 ```javascript
 npm install
 ```
+
 Una vez instaladas nuestras dependencias vamos a hacer **`npm start`** para arrancar nuestra aplicación.
 
 ```javascript
@@ -30,7 +31,7 @@ Abrimos el navegador y vamos a la url:
 
 [**http://localhost:1234**](http://localhost:1234)
 
->## Pasos
+> ## Pasos
 
 Vamos a comenzar añadiendo el siguiente código **html** dentro del input de nuestro formulario y enviamos.
 
@@ -68,7 +69,7 @@ Lo que sucede es que **html5** ya controla este tipo de inyecciones de código e
 Una de las formas para saltarnos esta restricción es inyectar nuestro código por ejemplo en la función `onerror` de la etiqueta `<img>`, vamos a probarlo.
 
 ```html
-<img src='x' onerror='alert("la hemos liao")'>
+<img src="x" onerror='alert("la hemos liao")' />
 ```
 
 <img src="./assets/05.png" alt="css-loader" style="zoom:67%;" />
@@ -79,9 +80,9 @@ Al enviar vemos que la imagen sale errónea pero hemos ejecutado código _javasc
 
 Esto es un ejemplo básico, en las siguientes demos veremos cómo podemos sustraer cookies, headers y varios ejemplos más.
 
->## Cómo solucionarlo
+> ## Cómo solucionarlo
 
-Para solucionar esto,  _mdn_ nos recomienda que utilicemos _textContent_.
+Para solucionar esto, _mdn_ nos recomienda que utilicemos _textContent_.
 
 Vamos a nuestro _index.ts_ y cambiamos _innerHTML_ por _textContent_.
 
@@ -118,6 +119,10 @@ un "purifier", ojo que aquí se pueden quedar puertas abiertas.
 npm install dompurify --save
 ```
 
+```bash
+npm install @types/dompurify --save-dev
+```
+
 ```diff
 document.getElementById("submit").addEventListener("click", function (e) {
 	const input = document.getElementById("name") as HTMLInputElement | null;
@@ -129,10 +134,25 @@ document.getElementById("submit").addEventListener("click", function (e) {
 });
 ```
 
-```bash
+- Arrancamos
 
+```bash
+npm start
 ```
 
+- Si volvemos a intentar insertar el código malicioso:
+
+```
+<img src='x' onerror='alert("la hemos liao")'>
+```
+
+Si nos fijamos aparece el IMG pero no el script.
+
+Así podemos insertar un botón
+
+```html
+Soy el contenido del input <button style="height: 40px">Soy un botón</button>
+```
 
 # Referencias
 
