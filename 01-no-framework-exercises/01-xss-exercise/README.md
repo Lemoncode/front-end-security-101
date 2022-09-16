@@ -1,4 +1,4 @@
-# No framework - ejercicio 01 
+# No framework - ejercicio 01
 
 En este ejemplo vamos a tener un formulario y un texto, este texto lo vamos a mostrar en una etiqueta _span_. Vamos a ver si en ese texto podemos inyectar un script y ejecutar un código malicioso.
 
@@ -7,7 +7,7 @@ Aunque no debería de ejecutarse una etiqueta _script_ insertada dentro de un in
 Para solucionar esto _mdn_ nos recomienda usar:
 
 - **Element.SetHTML()**: para hacer un sanitize del texto antes de insertarlo en el DOM. Este método está todavía en experimental.
-- **Node.textContent**: no lo analiza cómo si fuera HTML, y lo inserta como texto plano. 
+- **Node.textContent**: no lo analiza cómo si fuera HTML, y lo inserta como texto plano.
 
 [Más información](https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML)
 
@@ -26,7 +26,7 @@ Una vez instaladas nuestras dependencias vamos a hacer **`npm start`** para arra
 npm start
 ```
 
-Abrimos el navegador y vamos a la url: 
+Abrimos el navegador y vamos a la url:
 
 [**http://localhost:1234**](http://localhost:1234)
 
@@ -81,7 +81,7 @@ Esto es un ejemplo básico, en las siguientes demos veremos cómo podemos sustra
 
 >## Cómo solucionarlo
 
-Para solucionar esto,  _mdn_ nos recomienda que utilicemos _textContent_. 
+Para solucionar esto,  _mdn_ nos recomienda que utilicemos _textContent_.
 
 Vamos a nuestro _index.ts_ y cambiamos _innerHTML_ por _textContent_.
 
@@ -103,7 +103,7 @@ Y si ahora introducimos en nuestro _input_ y enviamos:
 <img src='x' onerror='alert("la hemos liao")'>
 ```
 
-Nos trata a la etiqueta _img_ como si fuera un texto plano y nos lo inserta dentro del _result_. 
+Nos trata a la etiqueta _img_ como si fuera un texto plano y nos lo inserta dentro del _result_.
 
 <img src="./assets/07.png" alt="css-loader" style="zoom:67%;" />
 
@@ -111,5 +111,29 @@ Si inspeccionamos el código en nuestro navegador este sería el resultado:
 
 <img src="./assets/08.png" alt="css-loader" style="zoom:67%;" />
 
+Si no queremos perder la capacidad de poner HTML, podemos intentar usar
+un "purifier", ojo que aquí se pueden quedar puertas abiertas.
+
+```bash
+npm install dompurify --save
+```
+
+```diff
+document.getElementById("submit").addEventListener("click", function (e) {
+	const input = document.getElementById("name") as HTMLInputElement | null;
+	const contenido = input?.value;
+
+-	document.getElementById("result").textContent = contenido;
++  const contenidoCurado = DOMPurify.sanitize(contenido);
++  document.getElementById("result").innerHTML = contenidoCurado;
+});
+```
+
+```bash
+
+```
+
+
+# Referencias
 
 [En este enlace puedes encontrar varios ejemplos de código con inyecciones **XSS**]("https://cheatsheetseries.owasp.org/cheatsheets/XSS_Filter_Evasion_Cheat_Sheet.html")
