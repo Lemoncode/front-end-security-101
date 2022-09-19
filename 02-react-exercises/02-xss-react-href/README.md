@@ -1,6 +1,6 @@
 # XSS con React - Ejercicio 2
 
-En este ejemplo vamos a ver como se comporta React ante un ataque XSS en el que se inyecta código JavaScript en una etiqueta anchor.
+En este ejemplo vamos a ver cómo se comporta React ante un ataque XSS en el que se inyecta código JavaScript en una etiqueta anchor.
 
 Para ello vamos a tener un _input_ en el que vamos a poder escribir la URL a la que queremos navegar. Cuando pulsemos el botón de _Ir_ se nos navegará a la URL que hayamos escrito.
 
@@ -66,7 +66,7 @@ Vemos que nos muestra un alert con el mensaje que hemos escrito.
 
 <img src="./assets/04.png" style="zoom:67%;" />
 
-Si ahora vemso nuestro archivo _package.json_
+Si ahora vemos nuestro archivo _package.json_
 
 <img src="./assets/03.png" style="zoom:67%;" />
 
@@ -74,7 +74,7 @@ Vemos que tenemos _react_ y _react-dom_ en la versión 17.0.1., podemos pensar q
 
 Vamos a desinstalar _react_ y _react-dom_ y a instalar la última versión. Y hacemos lo mismo con los _types_.
 
-Empezamos borrando la carpeta de _node_modules_ y desiinstalamos _react_ y _react-dom_:
+Empezamos borrando la carpeta de _node_modules_ y desinstalamos _react_ y _react-dom_:
 
 ```bash
 npm uninstall react react-dom --save
