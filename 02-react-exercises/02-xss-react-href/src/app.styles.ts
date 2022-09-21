@@ -39,5 +39,11 @@ export const formContainer = css`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 20px;
+`;
+
+export const label = css`
+  font-size: 1.2rem;
+  font-weight: 500;
+  align-self: flex-start;
 `;

@@ -124,6 +124,8 @@ npm install @types/dompurify --save-dev
 ```
 
 ```diff
+import * as DOMPurify from "dompurify";
+.....
 document.getElementById("submit").addEventListener("click", function (e) {
 	const input = document.getElementById("name") as HTMLInputElement | null;
 	const contenido = input?.value;
